@@ -26,10 +26,11 @@ except ImportError:
 
 
 gpu_id=0
+ckpt_dir="/apdcephfs_qy3/share_976139/users/xuelonggeng/ckpt/osum_echat/models--ASLP-lab--OSUM-EChat/snapshots/974b3d37cc774acd00c097c07961d23674a35186"
 device = torch.device(f'cuda:{gpu_id}')
-checkpoint_path = "**/language_think_final.pt"
+checkpoint_path = f"{ckpt_dir}/language_think_final.pt"
 config_path = "conf/ct_config.yaml"
-cosyvoice_model_path = "**/CosyVoice-300M-25Hz"
+cosyvoice_model_path = f"{ckpt_dir}/CosyVoice-300M-25Hz"
 
 prompt_wav_path = "./tts/assert/prompt.wav"
 prompt_audio_cache = {"拟人": load_wav(prompt_wav_path, 22050)}
