@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://QicongXie.github.io/end2endvc/ -->
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+  <title>OSUM-EChat: Enhancing End-to-End Empathetic Spoken Chatbot via Understanding-Driven Spoken Dialogue</title>
+  <meta name="generator" content="Jekyll v3.9.0">
+  <meta property="og:title" content="title">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <!-- End Jekyll SEO tag -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* 导航栏样式 - 使用与主题色一致的颜色 */
+    .navbar {
+      overflow: hidden;
+      background-color: #157878; /* 与页头主题色一致 */
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: white; /* 白色文字与主题色形成对比 */
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .navbar a:hover {
+      background-color: #0f5e5e; /* 深色变体作为悬停效果 */
+      color: white;
+    }
+
+    .method {
+      display: inline-block;
+      font-weight: bold;
+    }
+
+    .explanation {
+      display: inline-block;
+    }
+
+    .video-title {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
+
+  <section class="page-header">
+    <!-- <h1 class="project-name">Demo PAGE</h1> -->
+    <!-- <h2 class="project-tagline"></h2> -->
+  </section>
+
+  <!-- 导航栏 -->
+  <div class="navbar">
+    <a href="#abstract">Abstract</a>
+    <a href="#demos">Demos</a>
+  </div>
+
+  <section class="main-content">
+    <h1 id="">
+      <center>OSUM-EChat: Enhancing End-to-End Empathetic Spoken Chatbot via Understanding-Driven Spoken Dialogue</center>
+    </h1>
+
+
+
+    <br>
+    <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
+    <p>Empathy is crucial in enabling natural interactions within spoken dialogue systems, allowing machines to recognize and respond appropriately to paralinguistic cues such as age, gender, and emotion. Recent advancements in end-to-end speech language models, which unify speech understanding and generation, provide promising solutions. However, several challenges persist, including an over-reliance on large-scale dialogue datasets, insufficient extraction of paralinguistic cues vital for conveying empathy, and the lack of empathy-specific datasets and evaluation frameworks. To address these issues, we introduce OSUM-EChat, an open-source, end-to-end spoken dialogue system designed to enhance empathetic interactions, particularly in resource-limited settings. Based on <a href="https://github.com/ASLP-lab/OSUM/tree/main/OSUM" target="_blank" rel="noopener noreferrer">OSUM</a>, OSUM-EChat introduces two key innovations: (1) a three-stage understanding-driven spoken dialogue training strategy that extends the capabilities of a large speech understanding model to spoken dialogue tasks, and (2) a linguistic-paralinguistic dual thinking mechanism that integrates paralinguistic understanding through a chain of thought with dialogue generation, enabling the system to produce more empathetic responses. This approach reduces reliance on large-scale dialogue datasets while maintaining high-quality empathetic interactions. Additionally, we introduce the EChat-200K dataset, a rich corpus of empathetic speech-to-speech dialogues, and the EChat-eval benchmark, a comprehensive framework for evaluating the empathetic capabilities of dialogue systems. Experimental results demonstrate that OSUM-EChat outperforms end-to-end spoken dialogue models regarding empathetic responsiveness, validating its effectiveness.</p>
+    <br><br>
+    <table border=0 frame=void rules=none>
+      <tr>
+        <center><img src='raw/system.png' width="80%"></center>
+        <center><span><b>Figure 1: The overview of the architecture and tasks of OSUM-EChat.</b></span> </center>
+      </tr>
+    </table>
+    <br><br>
+
+    <h2 id="demos">2. Demos <a name="Comparison"></a></h2>
+    <div class="demo">
+      <p>Check out the demo videos showcasing OSUM-EChat's capabilities.</p>
+      <div class="video-container" style="display: flex; flex-direction: column; align-items: center; gap: 50px;">
+<!--        <div style="display: flex;  align-items: center; height: auto; flex-direction: column;">-->
+<!--          <div class="video-title" style="margin-bottom: 20px;">Self Introduction</div>-->
+<!--          <video controls width="960" height="540" style="border: 3px solid #000;">-->
+<!--            <source src="raw/video/self-intro.mp4" type="video/mp4">-->
+<!--            Your browser does not support the video tag.-->
+<!--          </video>-->
+<!--        </div>-->
+
+        <div style="display: flex;  align-items: center; height: auto; flex-direction: column;">
+          <div class="video-title" style="margin-bottom: 20px;">Knowledge Q&A </div>
+          <video controls width="960" height="540" style="border: 3px solid #000;">
+            <source src="raw/video/knowledge.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="display: flex;  align-items: center; height: auto; flex-direction: column;">
+          <div class="video-title" style="margin-bottom: 20px;">Empathetic Dialogue - Emotion</div>
+          <video controls width="960" height="540" style="border: 3px solid #000;">
+            <source src="raw/video/emotion.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="display: flex;  align-items: center; height: auto; flex-direction: column;">
+          <div class="video-title">Empathetic Dialogue - Age and Gender</div>
+          <br><br>
+          <video controls width="960" height="540" style="border: 3px solid #000;">
+            <source src="raw/video/age_gender.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="display: flex;  align-items: center; height: auto; flex-direction: column;">
+          <div class="video-title" style="margin-bottom: 20px;">Empathetic Dialogue - Sound Event</div>
+          <video controls width="960" height="540" style="border: 3px solid #000;">
+            <source src="raw/video/caption.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="display: flex;  align-items: center; height: auto; flex-direction: column;">
+          <div class="video-title" style="margin-bottom: 20px;">Voice Cloning</div>
+          <video controls width="960" height="540" style="border: 3px solid #000;">
+            <source src="raw/video/voice_clone.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="display: flex;  align-items: center; height: auto; flex-direction: column;">
+          <div class="video-title" style="margin-bottom: 20px;">Real-time dialogue</div>
+          <video controls width="960" height="540" style="border: 3px solid #000;">
+            <source src="raw/video/realtime_chat_no_intro.mov" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <div class="performance">
+
+
+    <br><br><br>
+  </section>
+</body>
+
+</html>
