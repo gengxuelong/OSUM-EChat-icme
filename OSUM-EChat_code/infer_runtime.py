@@ -8,9 +8,9 @@ import torch
 
 from common_utils.utils4infer import get_feat_from_wav_path, load_model_and_tokenizer, token_list2wav
 
-sys.path.insert(0, '..')
-sys.path.insert(0, 'tts')
-sys.path.insert(0, 'tts/third_party/Matcha-TTS')
+sys.path.insert(0, '.')
+sys.path.insert(0, './tts')
+sys.path.insert(0, './tts/third_party/Matcha-TTS')
 from patches import modelling_qwen2_infer_gpu  # 打patch
 from tts.cosyvoice.cli.cosyvoice import CosyVoice
 from tts.cosyvoice.utils.file_utils import load_wav
@@ -25,14 +25,13 @@ except ImportError:
 
 
 
-gpu_id=7
-ckpt_dir="/apdcephfs_qy3/share_976139/users/xuelonggeng/ckpt/osum_echat/models--ASLP-lab--OSUM-EChat/snapshots/974b3d37cc774acd00c097c07961d23674a35186"
+gpu_id=0
 device = torch.device(f'cuda:{gpu_id}')
-checkpoint_path = f"{ckpt_dir}/language_think_final.pt"
+checkpoint_path = "**/language_think_final.pt"
 config_path = "conf/ct_config.yaml"
-cosyvoice_model_path = f"{ckpt_dir}/CosyVoice-300M-25Hz"
+cosyvoice_model_path = "**/CosyVoice-300M-25Hz"
 
-prompt_wav_path = "tts/assert/prompt.wav"
+prompt_wav_path = "./tts/assert/prompt.wav"
 prompt_audio_cache = {"拟人": load_wav(prompt_wav_path, 22050)}
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s')
 
@@ -42,7 +41,7 @@ cosyvoice = CosyVoice(cosyvoice_model_path, gpu_id=gpu_id)
 
 def do_s2t_speech_understanding(model, input_wav_path, input_prompt):  # 增加 model 参数
     model.eval()
-    feat, feat_lens = get_feat_from_wav_path(input_wav_path,device=device)
+    feat, feat_lens = get_feat_from_wav_path(input_wav_path)
     print(f'feat shape: {feat.shape}, feat_lens: {feat_lens}')
     if is_npu: torch_npu.npu.synchronize()
     start_time = time.time()
@@ -55,7 +54,7 @@ def do_s2t_speech_understanding(model, input_wav_path, input_prompt):  # 增加 
 
 def do_s2t_chat_no_think(model, input_wav_path):  # 增加 model 参数
     model.eval()
-    feat, feat_lens = get_feat_from_wav_path(input_wav_path,device=device)
+    feat, feat_lens = get_feat_from_wav_path(input_wav_path)
     print(f'feat shape: {feat.shape}, feat_lens: {feat_lens}')
     if is_npu: torch_npu.npu.synchronize()
     start_time = time.time()
@@ -67,7 +66,7 @@ def do_s2t_chat_no_think(model, input_wav_path):  # 增加 model 参数
 
 def do_s2t_chat_think(model, input_wav_path):  # 增加 model 参数
     model.eval()
-    feat, feat_lens = get_feat_from_wav_path(input_wav_path,device=device)
+    feat, feat_lens = get_feat_from_wav_path(input_wav_path)
     print(f'feat shape: {feat.shape}, feat_lens: {feat_lens}')
     if is_npu: torch_npu.npu.synchronize()
     start_time = time.time()
@@ -105,7 +104,7 @@ def do_t2t_chat(model, question_txt):  # 增加 model 参数
 
 def do_s2s(model, input_wav_path):  # 增加 model 参数
     model.eval()
-    feat, feat_lens = get_feat_from_wav_path(input_wav_path,device=device)
+    feat, feat_lens = get_feat_from_wav_path(input_wav_path)
     print(f'feat shape: {feat.shape}, feat_lens: {feat_lens}')
     if is_npu: torch_npu.npu.synchronize()
     start_time = time.time()
@@ -117,7 +116,7 @@ def do_s2s(model, input_wav_path):  # 增加 model 参数
 
 def do_s2s_think(model, input_wav_path):  # 增加 model 参数
     model.eval()
-    feat, feat_lens = get_feat_from_wav_path(input_wav_path,device=device)
+    feat, feat_lens = get_feat_from_wav_path(input_wav_path)
     print(f'feat shape: {feat.shape}, feat_lens: {feat_lens}')
     if is_npu: torch_npu.npu.synchronize()
     start_time = time.time()
@@ -129,7 +128,7 @@ def do_s2s_think(model, input_wav_path):  # 增加 model 参数
 
 
 print("开始预热模型...")
-warmup_wav_path = "tts/assert/hq_1.wav"
+warmup_wav_path = "./tts/assert/hq_1.wav"
 warmup_prompt = "将这段音频的语音内容详细记录为文字稿。"
 print(f"正在预热 ...")
 try:

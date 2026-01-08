@@ -3,8 +3,8 @@ from huggingface_hub import hf_hub_download
 import os
 
 # 定义您希望设置的下载目录
-CUSTOM_CACHE_DIR = "/apdcephfs_qy3/share_976139/users/xuelonggeng/ckpt/osum_echat"
-REPO_ID = "ASLP-lab/OSUM-EChat"
+CUSTOM_CACHE_DIR = "./ckpt/osum_echat"
+REPO_ID = "***/OSUM-EChat"
 
 print(f"设置下载目录为: {CUSTOM_CACHE_DIR}")
 

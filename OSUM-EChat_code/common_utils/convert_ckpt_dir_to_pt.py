@@ -24,4 +24,3 @@ if __name__ == '__main__':
         'module']
     print(weight_dict.keys())
     torch.save(weight_dict, f"{exp_dir}/{pt_name}.pt")
-# weigth_dict = torch.load("/mnt/sfs/asr/code/wenet_undersdand_and_speech_xlgeng/examples/wenetspeech/whisper/exp/epoch24_cosyvoice1_new-set_token_1w_plus-multi_task_new/step_24999.pt")
